@@ -135,11 +135,14 @@ Note: You should receive confirmation that these dependencies have been added to
     * View and modify OneNote notebooks in your organization
     * View and modify OneNote notebooks
     * Create pages in OneNote notebooks
-
+    
+![](/readme-images/OneNotePermissions.jpg)
 
 12. For the **Windows Azure Active Directory** application add or make sure the following permissions are enabled:
 	* Enable sign-on and read users' profiles
     * Access your organization's directory
+
+![](/readme-images/AADPermissions.jpg)
 
 13.	Copy the value specified for **Client ID** on the **Configure** page. Remember this value for the below section **Getting the ClientID and RedirectUri into the project**.
 14.	Click **Save** in the bottom menu.
