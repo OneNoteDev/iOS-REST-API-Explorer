@@ -3,6 +3,5 @@
 
 pod "AFNetworking", "~> 2.0"
 pod 'ADALiOS', "~> 1.2.4"
-pod 'LiveSDK'
 
 
