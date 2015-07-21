@@ -1,5 +1,5 @@
-# iOS-REST-API-Explorer
-OneNote REST API Explorer for iOS
+# OneNote REST API Explorer for iOS
+
 
 **Table of contents**
 
