@@ -362,7 +362,7 @@ NSString* const kUrlCellId = @"urlCellId";
 
                         [self.tableView reloadData];
                     } failure:^(id responseObject) {
-                        self.responseBody = @"FAILED";
+                        self.responseBody = responseObject;
                         
                         self.tableView.tableHeaderView = nil;
                         [self.tableView reloadData];
@@ -383,7 +383,7 @@ NSString* const kUrlCellId = @"urlCellId";
                          [self.tableView reloadData];
                          
                      } failure:^(id responseObject) {
-                         self.responseBody = @"FAILED";
+                         self.responseBody = [(NSError *)responseObject localizedDescription];
                          self.tableView.tableHeaderView = nil;
                          [self.tableView reloadData];
                      }];
@@ -400,7 +400,7 @@ NSString* const kUrlCellId = @"urlCellId";
                          [self.tableView reloadData];
                          
                      } failure:^(id responseObject) {
-                         self.responseBody = @"FAILED";
+                         self.responseBody = [(NSError *)responseObject localizedDescription];;
                          self.tableView.tableHeaderView = nil;
                          [self.tableView reloadData];
                      }];
@@ -417,7 +417,7 @@ NSString* const kUrlCellId = @"urlCellId";
                          [self.tableView reloadData];
                          
                      } failure:^(id responseObject) {
-                         self.responseBody = @"FAILED";
+                         self.responseBody = [(NSError *)responseObject localizedDescription];
                          self.tableView.tableHeaderView = nil;
                          [self.tableView reloadData];
                      }];
@@ -434,7 +434,7 @@ NSString* const kUrlCellId = @"urlCellId";
                                           self.tableView.tableHeaderView = nil;
                                           [self.tableView reloadData];
                                       } failure:^(id responseObject) {
-                                          self.responseBody = @"FAILED";
+                                          self.responseBody = [(NSError *)responseObject localizedDescription];
                                           self.tableView.tableHeaderView = nil;
                                           [self.tableView reloadData];
                                       }];
@@ -450,7 +450,7 @@ NSString* const kUrlCellId = @"urlCellId";
                                    self.tableView.tableHeaderView = nil;
                                    [self.tableView reloadData];
                                } failure:^(id responseObject) {
-                                   self.responseBody = @"FAILED";
+                                   self.responseBody = [(NSError *)responseObject localizedDescription];
                                    self.tableView.tableHeaderView = nil;
                                    [self.tableView reloadData];
                                }];

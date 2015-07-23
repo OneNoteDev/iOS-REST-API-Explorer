@@ -103,6 +103,8 @@ responseAsHTML:(BOOL)responseAsHTML
     AFJSONRequestSerializer *serializer = [AFJSONRequestSerializer serializer];
     [serializer setValue:[NSString stringWithFormat:@"Bearer %@", [[AuthenticationManager sharedInstance] accessToken]]
       forHTTPHeaderField:@"Authorization"];
+    [serializer setValue:@"" forHTTPHeaderField:@"Accept-Encoding"];
+    
     manager.requestSerializer = serializer;
 
     [manager PATCH:path

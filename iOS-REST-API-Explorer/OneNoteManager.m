@@ -587,7 +587,7 @@
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-notebooks"
                                              params:@{ParamsPageIDKey:@"",
                                                       @"$search":@"sample search term"}
-                                       paramsSource:@{ParamsPageIDKey:@(ParamsSourceGetSections),
+                                       paramsSource:@{ParamsPageIDKey:@(ParamsSourceGetPages),
                                                       @"$search":@(ParamsSourceTextEdit)}];
 
 }
