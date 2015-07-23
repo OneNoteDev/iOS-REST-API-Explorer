@@ -316,7 +316,7 @@ NSString* const kUrlCellId = @"urlCellId";
     if(nonFilledParamsList.count == 0)
         return YES;
     else{
-        NSMutableString *errorString = [NSMutableString stringWithString:@"The following parameters are not filled in:-\n"];
+        NSMutableString *errorString = [NSMutableString stringWithString:@"The following parameters are not filled in:\n"];
         for(NSString *key in nonFilledParamsList){
             [errorString appendString:@"\n"];
             [errorString appendString:key];
