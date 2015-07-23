@@ -176,6 +176,10 @@ This sample demonstrates OneNote REST calls across the notebook, pages, sections
 - **Networking (located in Network)**  - This sample uses the [AFNetworking](https://github.com/AFNetworking/AFNetworking) library for REST operations that will be downloaded with the pod install. See the class **NetworkManager** for the construction of each type of request.
 
 
+## Questions and comments
+We'd love to get your feedback about the OneNote REST API Explorer for iOS sample. You can send your feedback to us in the [Issues](https://github.com/OneNoteDev/iOS-REST-API-Explorer/issues) section of this repository. <br/>
+General questions about Office 365 development should be posted to [Stack Overflow](http://stackoverflow.com/questions/tagged/Office365+API). Make sure that your questions are tagged with [Office365] and [API].
+
 ## Additional resources
 
 * [OneNote APIs documentation](https://msdn.microsoft.com/en-us/library/office/dn575420.aspx)
