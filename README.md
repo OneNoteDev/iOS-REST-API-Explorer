@@ -177,7 +177,7 @@ This sample demonstrates OneNote REST calls across the notebook, pages, sections
 
 
 ## Questions and comments
-We'd love to get your feedback about the OneNote REST API Explorer for Android sample. You can send your feedback to us in the [Issues](https://github.com/OneNoteDev/iOS-REST-API-Explorer/issues) section of this repository. <br/>
+We'd love to get your feedback about the OneNote REST API Explorer for iOS sample. You can send your feedback to us in the [Issues](https://github.com/OneNoteDev/iOS-REST-API-Explorer/issues) section of this repository. <br/>
 General questions about Office 365 development should be posted to [Stack Overflow](http://stackoverflow.com/questions/tagged/Office365+API). Make sure that your questions are tagged with [Office365] and [API].
 
 ## Additional resources
