@@ -48,7 +48,7 @@
 
 /* Begin PBXFileReference section */
 		854A3998C333805F74F8CA48 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		960C1FCB1B3B639700918D53 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		960C1FCB1B3B639700918D53 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		961E871C1B44B20600060961 /* AuthHelperDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthHelperDelegate.h; sourceTree = "<group>"; };
 		963E9EE71B38C50400D57EAA /* iOS-REST-API-Explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-REST-API-Explorer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		963E9EEB1B38C50400D57EAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };

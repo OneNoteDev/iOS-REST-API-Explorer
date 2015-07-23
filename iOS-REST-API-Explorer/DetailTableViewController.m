@@ -362,7 +362,7 @@ NSString* const kUrlCellId = @"urlCellId";
 
                         [self.tableView reloadData];
                     } failure:^(id responseObject) {
-                        self.responseBody = responseObject;
+                        self.responseBody = [(NSError *)responseObject localizedDescription];
                         
                         self.tableView.tableHeaderView = nil;
                         [self.tableView reloadData];

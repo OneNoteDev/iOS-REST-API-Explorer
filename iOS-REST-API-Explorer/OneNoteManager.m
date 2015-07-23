@@ -209,13 +209,6 @@
     // Sample HTML Content here
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"simple_page" ofType:@"html" ];
     NSMutableString *htmlString = [NSMutableString stringWithString:[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]];
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                          dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterFullStyle];
-    
-    [htmlString replaceOccurrencesOfString:@"{contentDate}" withString:dateString options:NSLiteralSearch range:NSMakeRange(0, [dateString length])];
-
-    
     
     Operation *operation = [[Operation alloc] initWithOperationName:@"POST: Create a simple page using HTML"
                                                           urlString:[self createURLString:[NSString stringWithFormat:@"me/notes/sections/{%@}/pages", ParamsSectionIDKey]]
@@ -260,11 +253,7 @@
     // Sample HTML Content here
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"create_page_with_image" ofType:@"html" ];
     NSMutableString *htmlString = [NSMutableString stringWithString:[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]];
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                          dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterFullStyle];
-    
-    [htmlString replaceOccurrencesOfString:@"{contentDate}" withString:dateString options:NSLiteralSearch range:NSMakeRange(0, [dateString length])];
+
     MultiformObject *htmlPart = [[MultiformObject alloc] init];
     
     htmlPart.body = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
@@ -273,7 +262,7 @@
     
     MultiformObject *imagePart = [[MultiformObject alloc] init];
     
-    imagePart.body = UIImageJPEGRepresentation([UIImage imageNamed:@"logo.png"], 1.0f);
+    imagePart.body = UIImageJPEGRepresentation([UIImage imageNamed:@"logo.jpg"], 1.0f);
     imagePart.headers = @{@"Content-Disposition":@"form-data; name=\"image1\"",
                           @"Content-type":@"image/jpeg"};
     
@@ -297,11 +286,7 @@
     // Sample HTML Content here
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"create_page_with_web_snap" ofType:@"html" ];
     NSMutableString *htmlString = [NSMutableString stringWithString:[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]];
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                          dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterFullStyle];
-    
-    [htmlString replaceOccurrencesOfString:@"{contentDate}" withString:dateString options:NSLiteralSearch range:NSMakeRange(0, [dateString length])];
+
     MultiformObject *htmlPart = [[MultiformObject alloc] init];
     
     htmlPart.body = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
@@ -335,14 +320,7 @@
     
     // Sample HTML Content here
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"create_page_with_url_snapshot" ofType:@"html" ];
-    NSMutableString *htmlString = [NSMutableString stringWithString:[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]];
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                          dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterFullStyle];
-    
-    [htmlString replaceOccurrencesOfString:@"{contentDate}" withString:dateString options:NSLiteralSearch range:NSMakeRange(0, [dateString length])];
-    
-    
+    NSMutableString *htmlString = [NSMutableString stringWithString:[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]]; 
     
     Operation *operation = [[Operation alloc] initWithOperationName:@"POST: Page with a snapshot of a URL"
                                                           urlString:[self createURLString:[NSString stringWithFormat:@"me/notes/sections/{%@}/pages", ParamsSectionIDKey]]
@@ -368,11 +346,7 @@
     // Sample HTML Content here
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"create_page_with_pdf" ofType:@"html" ];
     NSMutableString *htmlString = [NSMutableString stringWithString:[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]];
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                          dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterFullStyle];
-    
-    [htmlString replaceOccurrencesOfString:@"{contentDate}" withString:dateString options:NSLiteralSearch range:NSMakeRange(0, [dateString length])];
+
     MultiformObject *htmlPart = [[MultiformObject alloc] init];
     
     htmlPart.body = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
@@ -405,12 +379,6 @@
     // Sample HTML Content here
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"create_page_with_note_tags" ofType:@"html" ];
     NSMutableString *htmlString = [NSMutableString stringWithString:[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]];
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                          dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterFullStyle];
-    
-    [htmlString replaceOccurrencesOfString:@"{contentDate}" withString:dateString options:NSLiteralSearch range:NSMakeRange(0, [dateString length])];
-    
     
     Operation *operation = [[Operation alloc] initWithOperationName:@"POST: Page with a notetags"
                                                           urlString:[self createURLString:[NSString stringWithFormat:@"me/notes/sections/{%@}/pages", ParamsSectionIDKey]]
@@ -435,11 +403,7 @@
     // Sample HTML Content here
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"create_page_with_business_cards" ofType:@"html" ];
     NSMutableString *htmlString = [NSMutableString stringWithString:[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]];
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                          dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterFullStyle];
-    
-    [htmlString replaceOccurrencesOfString:@"{contentDate}" withString:dateString options:NSLiteralSearch range:NSMakeRange(0, [dateString length])];
+
     MultiformObject *htmlPart = [[MultiformObject alloc] init];
     
     htmlPart.body = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
@@ -473,13 +437,7 @@
     // Sample HTML Content here
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"create_page_with_recipe" ofType:@"html" ];
     NSMutableString *htmlString = [NSMutableString stringWithString:[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]];
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                          dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterFullStyle];
-    
-    [htmlString replaceOccurrencesOfString:@"{contentDate}" withString:dateString options:NSLiteralSearch range:NSMakeRange(0, [dateString length])];
-    
-    
+
     Operation *operation = [[Operation alloc] initWithOperationName:@"POST: Page with a recipe"
                                                           urlString:[self createURLString:[NSString stringWithFormat:@"me/notes/sections/{%@}/pages", ParamsSectionIDKey]]
                                                       operationType:OperationPostCustom
@@ -503,12 +461,6 @@
     // Sample HTML Content here
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"create_page_with_product_info" ofType:@"html" ];
     NSMutableString *htmlString = [NSMutableString stringWithString:[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]];
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                          dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterFullStyle];
-    
-    [htmlString replaceOccurrencesOfString:@"{contentDate}" withString:dateString options:NSLiteralSearch range:NSMakeRange(0, [dateString length])];
-    
     
     Operation *operation = [[Operation alloc] initWithOperationName:@"POST: Page with a product info"
                                                           urlString:[self createURLString:[NSString stringWithFormat:@"me/notes/sections/{%@}/pages", ParamsSectionIDKey]]
