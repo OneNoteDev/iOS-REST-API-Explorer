@@ -55,7 +55,8 @@
         [pagesArray addObject:[self createPageWithWebPageSnapshot]];
         [pagesArray addObject:[self getAllPages]];
         [pagesArray addObject:[self getPagesSkipAndTop]];
-        [pagesArray addObject:[self searchAllPages]];
+        // This is not working at this time.
+        // [pagesArray addObject:[self searchAllPages]];
         [pagesArray addObject:[self getPageAsHTML]];
         [pagesArray addObject:[self getPageSpecificMetadata]];
         [pagesArray addObject:[self getSortedListOfPagesWithSelectedMetadata]];
@@ -523,11 +524,9 @@
 
 
 
-// This function does not work
-
-
-//Search all pages and return the paginated list of matching pages that contain the given
-//search term (case-insensitive search)
+// This function does not work at the moment. We will update it once it is ready.
+// Search all pages and return the paginated list of matching pages that contain the given
+// search term (case-insensitive search)
 - (Operation*) searchAllPages{
     return [[Operation alloc] initWithOperationName:@"GET: Search all pages"
                                           urlString:[self createURLString:[NSString stringWithFormat:@"me/notes/sections/{%@}/pages", ParamsPageIDKey]]
