@@ -112,16 +112,16 @@
 
 
 
-//Demonstrates how the $expand query parameter can be used to return all notebooks and their
+//Demonstrates how the expand query parameter can be used to return all notebooks and their
 //descendant sections, sectionGroups in one roundtrip.
 -(Operation*) getNotebooksAndSectionsExpand{
-    return [[Operation alloc] initWithOperationName:@"GET: Get notebooks and sections ($expand)"
+    return [[Operation alloc] initWithOperationName:@"GET: Get notebooks and sections (expand)"
                                           urlString:[self createURLString:@"me/notes/notebooks"]
                                       operationType:OperationGet
-                                        description:@"Demonstrates how the $expand query parameter can be used to return all notebooks and their descendant sections, sectionGroups in one roundtrip. In this case we are going to make a GET request on ~/notebooks?$expand=sections,sectionGroups($expand=sections)"
+                                        description:@"Demonstrates how the expand query parameter can be used to return all notebooks and their descendant sections, sectionGroups in one roundtrip. In this case we are going to make a GET request on ~/notebooks?expand=sections,sectionGroups(expand=sections)"
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-notebooks"
-                                             params:@{@"$expand":@"sections,sectionGroups($expand=sections)"}
-                                       paramsSource:@{@"$expand":@(ParamsSourceTextEdit)}];
+                                             params:@{@"expand":@"sections,sectionGroups(expand=sections)"}
+                                       paramsSource:@{@"expand":@(ParamsSourceTextEdit)}];
 }
 
 //Query for a list of all notebooks with a given name
@@ -141,12 +141,12 @@
     return [[Operation alloc] initWithOperationName:@"GET: Metadata of a specific notebook"
                                           urlString:[self createURLString:[NSString stringWithFormat:@"me/notes/notebooks/{%@}", ParamsNotebookIDKey]]
                                       operationType:OperationGet
-                                        description:@"Get a list of all notebooks, and then query the metadata for one of the selected notebooks.You'll need to provide the notebookID before running. Also this sample uses the notebook name as a parameter by default ($select). You can adjust to other values."
+                                        description:@"Get a list of all notebooks, and then query the metadata for one of the selected notebooks.You'll need to provide the notebookID before running. Also this sample uses the notebook name as a parameter by default (select). You can adjust to other values."
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-notebooks"
                                              params:@{ParamsNotebookIDKey:@"",
-                                                      @"$select":@"name"}
+                                                      @"select":@"name"}
                                        paramsSource:@{ParamsNotebookIDKey:@(ParamsSourceGetNotebooks),
-                                                      @"$select":@(ParamsSourceTextEdit)}];
+                                                      @"select":@(ParamsSourceTextEdit)}];
 
 }
 
@@ -176,12 +176,12 @@
                                              ];
 }
 
-//Get a sorted list of notebooks using the $select query parameter (notebook id, and name)
+//Get a sorted list of notebooks using the select query parameter (notebook id, and name)
 - (Operation*) getNotebooksWithSelectedMetadata{
     return [[Operation alloc] initWithOperationName:@"GET: Get notebooks with selected metadata"
                                           urlString:[self createURLString:@"me/notes/notebooks"]
                                       operationType:OperationGet
-                                        description:@"Get a sorted list of notebooks using the $select query parameter (notebook id, and name)"
+                                        description:@"Get a sorted list of notebooks using the select query parameter (notebook id, and name)"
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-notebooks"
                                              params:@{@"select":@"id, name"}
                                        paramsSource:@{@"select":@(ParamsSourceTextEdit)}
@@ -508,17 +508,17 @@
                                        paramsSource:nil];
 }
 
-//Shows how to use the $skip and $top query parameters
+//Shows how to use the skip and top query parameters
 - (Operation*) getPagesSkipAndTop{
     return [[Operation alloc] initWithOperationName:@"GET: Pages Skip And Top"
                                           urlString:[self createURLString:@"me/notes/pages"]
                                       operationType:OperationGet
-                                        description:@"Shows how to use the $skip and $top query parameters."
+                                        description:@"Shows how to use the skip and top query parameters."
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-pages"
-                                             params:@{@"$skip":@"1",
-                                                      @"$top":@"1"}
-                                       paramsSource:@{@"$skip":@(ParamsSourceTextEdit),
-                                                      @"$top":@(ParamsSourceTextEdit)}];
+                                             params:@{@"skip":@"1",
+                                                      @"top":@"1"}
+                                       paramsSource:@{@"skip":@(ParamsSourceTextEdit),
+                                                      @"top":@(ParamsSourceTextEdit)}];
 }
 
 
@@ -536,9 +536,9 @@
             //search term (case-insensitive search)"
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-notebooks"
                                              params:@{ParamsPageIDKey:@"",
-                                                      @"$search":@"sample search term"}
+                                                      @"search":@"sample search term"}
                                        paramsSource:@{ParamsPageIDKey:@(ParamsSourceGetPages),
-                                                      @"$search":@(ParamsSourceTextEdit)}];
+                                                      @"search":@(ParamsSourceTextEdit)}];
 
 }
 
@@ -570,18 +570,18 @@
                                         description:@"Get a paginated list of all pages, and then query the metadata for one of the selected pages."
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-pages"
                                              params:@{ParamsPageIDKey:@"",
-                                                      @"$select":@"title"}
+                                                      @"select":@"title"}
                                        paramsSource:@{ParamsPageIDKey:@(ParamsSourceGetPages),
-                                                      @"$select":@(ParamsSourceTextEdit)}];
+                                                      @"select":@(ParamsSourceTextEdit)}];
     
 }
 
-//Get a sorted list of pages using by the $orderBy and $select parameters
+//Get a sorted list of pages using by the orderBy and select parameters
 - (Operation*) getSortedListOfPagesWithSelectedMetadata{
     return [[Operation alloc] initWithOperationName:@"GET: Sorted list of pages (selected metadata)"
                                           urlString:[self createURLString:@"me/notes/pages"]
                                       operationType:OperationGet
-                                        description:@"Get a sorted list of pages by using the $orderBy and $select parameters."
+                                        description:@"Get a sorted list of pages by using the orderBy and select parameters."
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-pages"
                                              params:@{
                                                       @"select":@"title, id",
@@ -592,12 +592,12 @@
 }
 
 //Query for a paginated list of pages that contain a given title substring. This example
-//shows how to use the $filter=contains(title, \'&lt;term&gt;\') query parameter.
+//shows how to use the filter=contains(title, \'&lt;term&gt;\') query parameter.
 - (Operation*) getPagesWithSpecificTitle{
     return [[Operation alloc] initWithOperationName:@"GET: Get pages with a specific title"
                                           urlString:[self createURLString:@"me/notes/pages"]
                                       operationType:OperationGet
-                                        description:@"Query for a paginated list of pages that contain a given title substring. This example shows how to use the $filter=contains(title, \'&lt;term&gt;\') query parameter. Please enter a case-sensitive title substring in the parameters section."
+                                        description:@"Query for a paginated list of pages that contain a given title substring. This example shows how to use the filter=contains(title, \'&lt;term&gt;\') query parameter. Please enter a case-sensitive title substring in the parameters section."
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-pages"
                                              params:@{@"filter":@"title eq 'specific title'"}
                                        paramsSource:@{@"filter":@(ParamsSourceTextEdit)}];
@@ -650,12 +650,12 @@
 
 
 //Query for a list of all sections with a given name. This example shows how to use
-//the \'$filter=name eq \'&lt;term&gt;\' query parameter.
+//the 'filter eq name' query parameter.
 - (Operation*) getSectionWithSpecificName{
     return [[Operation alloc] initWithOperationName:@"GET: Sections with a specific name"
                                           urlString:[self createURLString:@"me/notes/sections"]
                                       operationType:OperationGet
-                                        description:@"Query for a list of all sections with a given name. This example shows how to use the \'$filter=name eq \'&lt;term&gt;\' query parameter. Please enter the case-sensitive full section name to look for in the parameters section."
+                                        description:@"Query for a list of all sections with a given name. This example shows how to use the 'filter eq name' query parameter. Please enter the case-sensitive full section name to look for in the parameters section."
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-sections"
                                              params:@{@"filter":@"name eq 'Test Section'"}
                                        paramsSource:@{@"filter":@(ParamsSourceTextEdit)}];
