@@ -143,10 +143,8 @@ Note: You should receive confirmation that these dependencies have been added to
     * Create pages in OneNote notebooks
 ![](/readme-images/OneNotePermissions.jpg)
 
-12. For the **Windows Azure Active Directory** application, add or make sure the following permissions are enabled:
+12. For the **Windows Azure Active Directory** application, add or make sure the following permission is enabled:
 	* Enable sign-on and read users' profiles
-    * Access your organization's directory
-![](/readme-images/AADPermissions.jpg)
 
 13.	Copy the value specified for **Client ID** on the **Configure** page. Remember this value for the section below **Getting the ClientID and RedirectUri into the project**.
 14.	Click **Save** in the bottom menu.
@@ -158,7 +156,7 @@ Note: You should receive confirmation that these dependencies have been added to
 
 Finally, you'll need to add the Client ID and Redirect Uri you recorded from the previous section **Register your app with Microsoft Azure**.
 
-Browse the **iOS-REST-API-Explorer** project directory and open up the workspace (iOS-REST-API-Explorer). In the **O365Auth.m** file, you'll see that the **ClientID** and **RedirectUri** values can be added to the top of the file. Supply the necessary values here:
+Browse the **iOS-REST-API-Explorer** project directory and open up the workspace (iOS-REST-API-Explorer). In the **O365Auth.m** file (located at iOS-REST-API_Explorer/Library/Authentication/O365Auth.m), you'll see that the **ClientID** and **RedirectUri** values can be added to the top of the file. Supply the necessary values here:
 
     // You will set your application's clientId and redirect URI. You get
     // these when you register your application in Azure AD.
@@ -184,7 +182,7 @@ This sample demonstrates OneNote REST calls across the notebook, pages, sections
 
 ## Questions and comments
 We'd love to get your feedback about the OneNote REST API Explorer for iOS sample. You can send your feedback to us in the [Issues](https://github.com/OneNoteDev/iOS-REST-API-Explorer/issues) section of this repository. <br/>
-General questions about Office 365 development should be posted to [Stack Overflow](http://stackoverflow.com/questions/tagged/Office365+API). Make sure that your questions are tagged with [Office365] and [API].
+General questions about Office 365 development should be posted to [Stack Overflow](http://stackoverflow.com/questions/tagged/Office365+API). Make sure that your questions are tagged with [Office365], [API], and [OneNote].
 
 ## Additional resources
 
