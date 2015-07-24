@@ -124,12 +124,12 @@
                                        paramsSource:@{@"expand":@(ParamsSourceTextEdit)}];
 }
 
-//Query for a list of all notebooks with a given name
+//Query for a list of all notebooks with a given name.
 -(Operation*) getNotebookByName{
     return [[Operation alloc] initWithOperationName:@"GET: Get notebooks with a specific name"
                                           urlString:[self createURLString:[NSString stringWithFormat:@"me/notes/notebooks"]]
                                       operationType:OperationGet
-                                        description:@"Query for a list of all notebooks with a given name."
+                                        description:@"Query for a list of all notebooks with a given name. For the filter parameter change the text value between the quotes as needed."
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-notebooks"
                                              params:@{@"filter":@"name eq 'sample name'"}
                                        paramsSource:@{@"filter":@(ParamsSourceTextEdit)}];
@@ -597,7 +597,7 @@
     return [[Operation alloc] initWithOperationName:@"GET: Get pages with a specific title"
                                           urlString:[self createURLString:@"me/notes/pages"]
                                       operationType:OperationGet
-                                        description:@"Query for a paginated list of pages that contain a given title substring. This example shows how to use the filter=contains(title, \'&lt;term&gt;\') query parameter. Please enter a case-sensitive title substring in the parameters section."
+                                        description:@"Query for a paginated list of pages that contain a given title substring. This example shows how to use the filter=contains(title, \'&lt;term&gt;\') query parameter. Please enter a case-sensitive title substring in the parameters section between the quotes."
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-pages"
                                              params:@{@"filter":@"title eq 'specific title'"}
                                        paramsSource:@{@"filter":@(ParamsSourceTextEdit)}];
@@ -655,7 +655,7 @@
     return [[Operation alloc] initWithOperationName:@"GET: Sections with a specific name"
                                           urlString:[self createURLString:@"me/notes/sections"]
                                       operationType:OperationGet
-                                        description:@"Query for a list of all sections with a given name. This example shows how to use the 'filter eq name' query parameter. Please enter the case-sensitive full section name to look for in the parameters section."
+                                        description:@"Query for a list of all sections with a given name. This example shows how to use the 'filter eq name' query parameter. Please enter the case-sensitive full section name between the quotes in the parameters section."
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-sections"
                                              params:@{@"filter":@"name eq 'Test Section'"}
                                        paramsSource:@{@"filter":@(ParamsSourceTextEdit)}];
