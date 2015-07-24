@@ -169,7 +169,7 @@
     return [[Operation alloc] initWithOperationName:@"GET: Get notebook shared by others"
                                           urlString:[self createURLString:@"me/notes/notebooks"]
                                       operationType:OperationGet
-                                        description:@"//Query for a list of all notebooks where the current user is not an Owner (i.e. the notebooks are owned by someone else and were shared with the current user with either a Reader or Contributor access level)."
+                                        description:@"Query for a list of all notebooks where the current user is not an Owner (i.e. the notebooks are owned by someone else and were shared with the current user with either a Reader or Contributor access level)."
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-notebooks"
                                              params:@{@"filter":@"userRole ne Microsoft.OneNote.Api.UserRole'Owner'"}
                                        paramsSource:@{@"filter":@(ParamsSourceTextEdit)}
@@ -231,8 +231,6 @@
 - (Operation*) createPageUnderNamedSection{
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"simple_page" ofType:@"html" ];
     NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    
-
     
     Operation *operation = [[Operation alloc] initWithOperationName:@"POST: Create page under a named section"
                                                           urlString:[self createURLString:@"me/notes/pages"]

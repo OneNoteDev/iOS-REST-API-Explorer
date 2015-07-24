@@ -12,6 +12,9 @@ static NSString * const REDIRECT_URL_STRING = @"REDIRECT_URL_STRING";
 static NSString * const CLIENT_ID           = @"CLIENT_ID";
 static NSString * const AUTHORITY           = @"https://login.microsoftonline.com/common";
 
+// Resource Id
+static NSString * const ONENOTE_RESOURCE_ID = @"https://onenote.com";
+
 @interface O365Auth ()
 
 @property (strong,   nonatomic) ADAuthenticationContext *authContext;
@@ -39,9 +42,11 @@ static NSString * const AUTHORITY           = @"https://login.microsoftonline.co
     return self;
 }
 
+#pragma mark - Authentication
 
+// public function to authenticate O365 accounts
 - (void) acquireAuthToken{
-    [self acquireAuthTokenWithResourceId:@"https://onenote.com"
+    [self acquireAuthTokenWithResourceId:ONENOTE_RESOURCE_ID
                              redirectURL:self.redirectURL
                                authority:self.authority
                                 clientID:self.clientId
@@ -58,24 +63,7 @@ static NSString * const AUTHORITY           = @"https://login.microsoftonline.co
                        }];
 }
 
-
-- (void) refreshToken:(NSString *)refreshToken{
-    [self.authContext acquireTokenByRefreshToken:refreshToken
-                                        clientId:CLIENT_ID
-                                 completionBlock:^(ADAuthenticationResult *result) {
-                                     if(AD_SUCCEEDED == result.status){
-                                         [self.delegate refreshToken:result.tokenCacheStoreItem.accessToken
-                                                          refreshToken:result.tokenCacheStoreItem.refreshToken
-                                                             expirates:result.tokenCacheStoreItem.expiresOn
-                                                              authType:AuthType_O365];
-                                     }
-                                     else{
-                                         [self.delegate refreshTokenFailure:[self generateError:result] authType:AuthType_O365];
-                                     }
-                                 }];
-}
-
-// Acquire access and refresh tokens from Azure AD for the user
+// Helper function for authentication
 - (void)acquireAuthTokenWithResourceId:(NSString *)resourceId
                            redirectURL:(NSURL *)redirectURL
                              authority:(NSString *)authority
@@ -101,6 +89,29 @@ static NSString * const AUTHORITY           = @"https://login.microsoftonline.co
                                }];
     
 }
+
+#pragma mark - Refresh token
+
+// If token expires, this function is called from AuthenticationManager to re-acquire the access token
+- (void) refreshToken:(NSString *)refreshToken{
+    [self.authContext acquireTokenByRefreshToken:refreshToken
+                                        clientId:CLIENT_ID
+                                 completionBlock:^(ADAuthenticationResult *result) {
+                                     if(AD_SUCCEEDED == result.status){
+                                         [self.delegate refreshToken:result.tokenCacheStoreItem.accessToken
+                                                          refreshToken:result.tokenCacheStoreItem.refreshToken
+                                                             expirates:result.tokenCacheStoreItem.expiresOn
+                                                              authType:AuthType_O365];
+                                     }
+                                     else{
+                                         [self.delegate refreshTokenFailure:[self generateError:result] authType:AuthType_O365];
+                                     }
+                                 }];
+}
+
+
+
+#pragma mark - Clear credentials
 
 - (void) clearCredentials{
     id<ADTokenCacheStoring> cache = [ADAuthenticationSettings sharedInstance].defaultTokenCacheStore;

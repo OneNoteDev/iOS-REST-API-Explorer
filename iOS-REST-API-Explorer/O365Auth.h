@@ -7,11 +7,20 @@
 
 @class ADAuthenticationResult;
 
+/**
+ *  O365 Auth
+ *  This class is used to authenticate Office 365 accounts.
+ *  It includes:
+ *     - acquireAuthToken   : acquire an access token from Microsoft Azure
+ *     - refreshToken       : refresh access token
+ *     - clearCredentials   : clears cache & cookie to clear credentials
+ */
 @interface O365Auth : NSObject
 
 @property (nonatomic, weak) id<AuthHelperDelegate> delegate;
 
 - (void) acquireAuthToken;
+
 - (void) refreshToken:(NSString *)refreshToken;
 
 - (void) clearCredentials;

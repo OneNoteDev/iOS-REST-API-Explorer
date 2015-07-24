@@ -10,6 +10,7 @@
 
 /**
  *  Authentication Delegates
+ *  This delegate is used for callbacks on authentication
  */
 @protocol AuthManagerDelegates <NSObject>
 
@@ -19,9 +20,15 @@
 
 @end
 
+
+/**
+ *  AuthenticationManager
+ *  This class is used as an interface between a UIViewController and authentication.
+ *  If additional authentication mechanisms are used, this class is scalable.
+ */
 @interface AuthenticationManager : NSObject <AuthHelperDelegate>
 
-@property (nonatomic, assign) BOOL isAzureConnected;
+@property (nonatomic, assign) BOOL isO365Connected;
 
 @property (nonatomic, strong) NSString *userId;
 
@@ -33,12 +40,13 @@
 
 + (AuthenticationManager *)sharedInstance;
 
-// Connect to Azure
-- (void) connectAzure;
+// Connect O365 account
+- (void) connectO365;
 
 // Clear everything on disconnect
 - (void) disconnect;
 
+// Check and refresh tokens if needed
 - (void)checkAndRefreshToken;
 
 @end

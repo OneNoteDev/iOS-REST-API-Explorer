@@ -17,8 +17,7 @@
 
 @implementation NetworkManager
 
-// Some values are handled in URL manipulation, no need to be included as
-// parameters in the request.
+// These keys will be removed from the request parameters
 + (NSArray*) keysToRemove{
     static NSArray *_keysToRemove;
     if(_keysToRemove == nil)
@@ -26,11 +25,13 @@
     return _keysToRemove;
 }
 
+// Helper to remove certains keys from the NSDictionary
 + (NSDictionary*) paramsRemove:(NSArray*)keys from:(NSDictionary*)params{
     NSMutableDictionary *newParams = [NSMutableDictionary dictionaryWithDictionary:params];
     [newParams removeObjectsForKeys:keys];
     return newParams;
 }
+
 
 + (void)get:(NSString*)path queryParams:(NSDictionary*)queryParams
 responseAsHTML:(BOOL)responseAsHTML

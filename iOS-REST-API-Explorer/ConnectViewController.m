@@ -31,7 +31,7 @@
 
 - (IBAction)authenticateWithAzureTapped:(id)sender {
     [AuthenticationManager sharedInstance].authDelegate = self;
-    [[AuthenticationManager sharedInstance] connectAzure];
+    [[AuthenticationManager sharedInstance] connectO365];
 }
 
 

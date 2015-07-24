@@ -36,18 +36,18 @@ NSInteger const TokenExpirationBuffer = 300;
 
 
 #pragma mark - properties
-- (void) setIsAzureConnected:(BOOL)isAzureConnected{
+- (void) setIsO365Connected:(BOOL)isAzureConnected{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:isAzureConnected forKey:@"azureConnected"];
+    [userDefaults setBool:isAzureConnected forKey:@"O365Connected"];
     [userDefaults synchronize];
 }
 
-- (BOOL) isAzureConnected{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"azureConnected"];
+- (BOOL) isO365Connected{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"O365Connected"];
 }
 
-#pragma mark - Azure connection
-- (void)connectAzure{
+#pragma mark - O365 connection
+- (void)connectO365{
     self.o365Auth.delegate = self;
     [self.o365Auth acquireAuthToken];
 }
@@ -85,7 +85,7 @@ NSInteger const TokenExpirationBuffer = 300;
     self.refreshToken = refreshToken;
     self.expiresDate = expiresOn;
     
-    self.isAzureConnected = YES;
+    self.isO365Connected = YES;
 
     [self.authDelegate authSuccess];
 }
@@ -122,7 +122,7 @@ NSInteger const TokenExpirationBuffer = 300;
         [self.o365Auth clearCredentials];
     }
 
-    self.isAzureConnected = NO;
+    self.isO365Connected = NO;
 }
 
 @end
