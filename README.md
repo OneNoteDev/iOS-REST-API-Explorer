@@ -114,9 +114,8 @@ If the install and setup were successful, you should see the message **Setup com
 The iOS-OneNote-REST Explorer sample has a dependency on the Active Directory Authentication Library for iOS (ADAL) for enabling client to access OneNote for enterprise notebooks. The ADAL provides protocol support for OAuth 2.0, Web API integration with user level consent, and two-factor authentication.  It also uses AFNetworking to help manage REST communication between the app and the OneNote service. The sample contains a podfile that will get the ADAL and AFNetworking components (pods) into your project. It's located in the root ("Podfile"). The syntax should look something similar to this:
 
 
-	pod "AFNetworking", "~> 2.0"
-	pod 'ADALiOS', "~> 1.2.4"
-
+	pod 'AFNetworking', '2.5.4'
+	pod 'ADALiOS', '1.2.4'
 
 
 You'll simply need to navigate to the project directory in the **Terminal** (root of the project folder) and run the following command.
