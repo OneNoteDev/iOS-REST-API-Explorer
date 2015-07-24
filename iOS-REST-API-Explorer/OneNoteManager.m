@@ -33,9 +33,9 @@
         NSMutableArray *notebooksArray = [NSMutableArray new];
         [notebooksArray addObject:[self getListOfAllNotebooks]];
         [notebooksArray addObject:[self getNotebooksAndSectionsExpand]];
+        [notebooksArray addObject:[self getNotebookByID]];
         [notebooksArray addObject:[self getNotebookByName]];
         [notebooksArray addObject:[self getNotebookSpecificMetadata]];
-        [notebooksArray addObject:[self getNotebookByID]];
         [notebooksArray addObject:[self getNotebookSharedByOthers]];
         [notebooksArray addObject:[self getNotebooksWithSelectedMetadata]];
         [notebooksArray addObject:[self createNotebook]];
@@ -44,12 +44,6 @@
         // Section 2 - Pages
         NSMutableArray *pagesArray = [NSMutableArray new];
         [pagesArray addObject:[self createSimplePage]];
-        [pagesArray addObject:[self createPageUnderNamedSection]];
-        [pagesArray addObject:[self getAllPages]];
-        [pagesArray addObject:[self getPagesSkipAndTop]];
-        [pagesArray addObject:[self searchAllPages]];
-        [pagesArray addObject:[self deletePage]];
-        [pagesArray addObject:[self getPageAsHTML]];
         [pagesArray addObject:[self createPageWithImage]];
         [pagesArray addObject:[self createPageWithURLSnapshot]];
         [pagesArray addObject:[self createPageWithPDF]];
@@ -57,11 +51,17 @@
         [pagesArray addObject:[self createPageWithBusinessCard]];
         [pagesArray addObject:[self createPageWithRecipe]];
         [pagesArray addObject:[self createPageWithProductInfo]];
+        [pagesArray addObject:[self createPageUnderNamedSection]];
+        [pagesArray addObject:[self createPageWithWebPageSnapshot]];
+        [pagesArray addObject:[self getAllPages]];
+        [pagesArray addObject:[self getPagesSkipAndTop]];
+        [pagesArray addObject:[self searchAllPages]];
+        [pagesArray addObject:[self getPageAsHTML]];
         [pagesArray addObject:[self getPageSpecificMetadata]];
         [pagesArray addObject:[self getSortedListOfPagesWithSelectedMetadata]];
         [pagesArray addObject:[self getPagesWithSpecificTitle]];
         [pagesArray addObject:[self getPagesInSpecificSection]];
-        [pagesArray addObject:[self createPageWithWebPageSnapshot]];
+        [pagesArray addObject:[self deletePage]];
         [pagesArray addObject:[self patchPage]];
         
         
@@ -69,9 +69,9 @@
         NSMutableArray *sectionsArray = [NSMutableArray new];
         [sectionsArray addObject:[self getAllSections]];
         [sectionsArray addObject:[self getSectionWithSpecificName]];
-        [sectionsArray addObject:[self createSectionInNotebook]];
         [sectionsArray addObject:[self getMetadataOfSpecificSection]];
         [sectionsArray addObject:[self getSpecificNotebookSections]];
+        [sectionsArray addObject:[self createSectionInNotebook]];
         
         // Section 4 - Section Groups
         NSMutableArray *sectionGroupsArray = [NSMutableArray new];
@@ -141,7 +141,7 @@
     return [[Operation alloc] initWithOperationName:@"GET: Metadata of a specific notebook"
                                           urlString:[self createURLString:[NSString stringWithFormat:@"me/notes/notebooks/{%@}", ParamsNotebookIDKey]]
                                       operationType:OperationGet
-                                        description:@"Get a list of all notebooks and then query the metadata for one of the selected notebooks.You'll need to provide the notebookID before running. Also this sample uses the notebook name as a parameter by default ($select). You can adjust to other values."
+                                        description:@"Get a list of all notebooks, and then query the metadata for one of the selected notebooks.You'll need to provide the notebookID before running. Also this sample uses the notebook name as a parameter by default ($select). You can adjust to other values."
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-notebooks"
                                              params:@{ParamsNotebookIDKey:@"",
                                                       @"$select":@"name"}
@@ -203,7 +203,7 @@
 #pragma mark - Pages Snippets
 
 
-//Create a simple page using HTML to describe the page content (under default section)
+//Create a simple page by using HTML to describe the page content (under default section)
 - (Operation*) createSimplePage{
     
     // Sample HTML Content here
@@ -215,7 +215,7 @@
                                                       operationType:OperationPostCustom
                                                        customHeader:@{@"content-type":@"application/xhtml+xml"}
                                                          customBody:htmlString
-                                                        description:@"Create a simple page using HTML to describe the page content (under default section)"
+                                                        description:@"Create a simple page by using HTML to describe the page content (under default section)."
                                                   documentationLink:@"http://dev.onenote.com/docs#/reference/post-pages/v10pages"
                                                              params:@{ParamsSectionIDKey:@""}
                                                        paramsSource:@{ParamsSectionIDKey:@(ParamsSourceGetSections)}];
@@ -303,7 +303,7 @@
     Operation *operation = [[Operation alloc] initWithOperationName:@"POST: Page with snapshot (embedded web page)"
                                                           urlString:[self createURLString:[NSString stringWithFormat:@"me/notes/sections/{%@}/pages", ParamsSectionIDKey]]
                                                       operationType:OperationPostMultiPart
-                                                        description:@"Create a page with a snapshot of the HTML of a web page on it"
+                                                        description:@"Create a page with a snapshot of the HTML of a webpage on it"
                                                   documentationLink:@"http://dev.onenote.com/docs#/reference/post-pages/v10pages"
                                                    multiPartObjects:@[htmlPart, webPart]];
     
@@ -380,7 +380,7 @@
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"create_page_with_note_tags" ofType:@"html" ];
     NSMutableString *htmlString = [NSMutableString stringWithString:[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil]];
     
-    Operation *operation = [[Operation alloc] initWithOperationName:@"POST: Page with a notetags"
+    Operation *operation = [[Operation alloc] initWithOperationName:@"POST: Page with note tags"
                                                           urlString:[self createURLString:[NSString stringWithFormat:@"me/notes/sections/{%@}/pages", ParamsSectionIDKey]]
                                                       operationType:OperationPostCustom
                                                        customHeader:@{@"content-type":@"application/xhtml+xml"}
@@ -397,7 +397,7 @@
     return operation;
 }
 
-//Create a page with a business card info automatically extracted from an image
+//Create a page with business card info automatically extracted from an image
 - (Operation*) createPageWithBusinessCard{
     
     // Sample HTML Content here
@@ -420,7 +420,7 @@
     Operation *operation = [[Operation alloc] initWithOperationName:@"POST: Page with a business card"
                                                           urlString:[self createURLString:[NSString stringWithFormat:@"me/notes/sections/{%@}/pages", ParamsSectionIDKey]]
                                                       operationType:OperationPostMultiPart
-                                                        description:@"Create a page with a business card info automatically extracted from an image"
+                                                        description:@"Create a page with business card info automatically extracted from an image"
                                                   documentationLink:@"http://dev.onenote.com/docs#/reference/post-pages/v10pages"
                                                    multiPartObjects:@[htmlPart, part]];
     
@@ -455,7 +455,7 @@
     return operation;
 }
 
-// Create a page with a product info automatically extracted from an example amazon.com webpage
+// Create a page with a product info automatically extracted from an example on an amazon.com webpage
 - (Operation*) createPageWithProductInfo{
     
     // Sample HTML Content here
@@ -545,13 +545,13 @@
 }
 
 
-//Get a paginated list of all pages and then return back the content of one of the selected pages as HTML
+//Get a paginated list of all pages and then return the content of one of the selected pages as HTML
 - (Operation*) getPageAsHTML
 {
     Operation *operation =  [[Operation alloc] initWithOperationName:@"GET: Recall a pages content as HTML"
                                                            urlString:[self createURLString:[NSString stringWithFormat:@"me/notes/pages/{%@}/content", ParamsPageIDKey]]
                                                        operationType:OperationGet
-                                                         description:@"Get a paginated list of all pages and then return back the content of one of the selected pages as HTML"
+                                                         description:@"Get a paginated list of all pages, and then return the content of one of the selected pages as HTML"
                                                    documentationLink:@"http://dev.onenote.com/docs#/reference/get-pages"
                                                               params:@{ParamsPageIDKey:@"",
                                                                        @"includeIDs":@"true"}
@@ -564,12 +564,12 @@
 }
 
 
-//Get a paginated list of all pages and then query the metadata for one of the selected pages.
+//Get a paginated list of all pages, and then query the metadata for one of the selected pages.
 -(Operation*) getPageSpecificMetadata{
     return [[Operation alloc] initWithOperationName:@"GET: Metadata of a specific page"
                                           urlString:[self createURLString:[NSString stringWithFormat:@"me/notes/pages/{%@}", ParamsPageIDKey]]
                                       operationType:OperationGet
-                                        description:@"Get a paginated list of all pages and then query the metadata for one of the selected pages."
+                                        description:@"Get a paginated list of all pages, and then query the metadata for one of the selected pages."
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-pages"
                                              params:@{ParamsPageIDKey:@"",
                                                       @"$select":@"title"}
@@ -578,12 +578,12 @@
     
 }
 
-//Get a sorted list of pages using the $orderBy and $select parameters
+//Get a sorted list of pages using by the $orderBy and $select parameters
 - (Operation*) getSortedListOfPagesWithSelectedMetadata{
     return [[Operation alloc] initWithOperationName:@"GET: Sorted list of pages (selected metadata)"
                                           urlString:[self createURLString:@"me/notes/pages"]
                                       operationType:OperationGet
-                                        description:@"Get a sorted list of pages using the $orderBy and $select parameters."
+                                        description:@"Get a sorted list of pages by using the $orderBy and $select parameters."
                                   documentationLink:@"http://dev.onenote.com/docs#/reference/get-pages"
                                              params:@{
                                                       @"select":@"title, id",
