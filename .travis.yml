@@ -1,0 +1,9 @@
+language: objective-c
+
+before_install:
+  - gem install cocoapods
+  - brew update
+  - if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
+
+script:
+  - xctool -workspace iOS-REST-API-Explorer.xcworkspace -scheme iOS-REST-API-Explorer -sdk iphonesimulator

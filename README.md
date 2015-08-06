@@ -1,5 +1,5 @@
 # OneNote REST API Explorer for iOS
-
+[![Build Status](https://travis-ci.org/OneNoteDev/iOS-REST-API-Explorer.svg)](https://travis-ci.org/OneNoteDev/iOS-REST-API-Explorer)
 
 **Table of contents**
 
