@@ -140,7 +140,7 @@ Note: You should receive confirmation that these dependencies have been added to
     * View and modify OneNote notebooks in your organization
     * View and modify OneNote notebooks
     * Create pages in OneNote notebooks
-![](/readme-images/OneNotePermissions.jpg)
+![OneNote permissions scope dropdown list](/readme-images/OneNotePermissions.jpg)
 
 12. For the **Windows Azure Active Directory** application, add or make sure the following permission is enabled:
 	* Enable sign-on and read users' profiles
